@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/show_category_fragment"
+            android:icon="@mipmap/ic_category"
+            android:title="@string/show_category" />
+        <item
+            android:id="@+id/show_pager_channels_fragment"
+            android:icon="@mipmap/ic_category"
+
+            android:title="@string/show_pager_channels" />
+        <!---<item
+            android:id="@+id/nav_third_fragment"
+            android:icon="@mipmap/ic_launcher"
+
+            android:title="@string/third" />-->
+    </group>
+</menu>

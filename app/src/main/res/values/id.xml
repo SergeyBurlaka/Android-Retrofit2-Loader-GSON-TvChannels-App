@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="channel_loader" type="id" />
+    <item name="channel_db_loader" type="id" />
+    <item name="tvshow_loader" type="id" />
+    <item name="tvshow_db_loader" type="id" />
+
+    <item name="category_channel_db_loader" type="id" />
+</resources>

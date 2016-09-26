@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ShowChannelsApp</string>
+    <string name="get_cannel">GET CANNEL</string>
+    <string name="refresh">refresh</string>
+    <string name="textview1">TextView1</string>
+    <string name="show_category">Chanel category </string>
+    <string name="show_pager_channels">Channel programs</string>
+    <string name="third">Third</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.quest.uni2b.appengine.gsm.demo.usertouserdemo2svn020316.MainActivity">
+
+    <item
+        android:id="@+id/myRefresh"
+        android:icon="@mipmap/refresh"
+        app:showAsAction="always"
+        android:title="@string/refresh"/>
+
+</menu>
