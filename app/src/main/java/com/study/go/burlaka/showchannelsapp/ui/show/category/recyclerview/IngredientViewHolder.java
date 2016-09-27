@@ -18,7 +18,7 @@ public class IngredientViewHolder extends ChildViewHolder {
         mIngredientTextView = (TextView) itemView.findViewById(R.id.ingredient_textview);
     }
 
-    public void bind(Ingredient ingredient) {
-        mIngredientTextView.setText(ingredient.getName());
+    public void bind(Channels channels) {
+        mIngredientTextView.setText(channels.getName());
     }
 }

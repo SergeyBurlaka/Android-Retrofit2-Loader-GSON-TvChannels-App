@@ -18,7 +18,7 @@ public class RecipeViewHolder extends ParentViewHolder {
         mRecipeTextView = (TextView) itemView.findViewById(R.id.recipe_textview);
     }
 
-    public void bind(Recipe recipe) {
-        mRecipeTextView.setText(recipe.getName());
+    public void bind(CategoryChannelList categoryChannelList) {
+        mRecipeTextView.setText(categoryChannelList.getName());
     }
 }

@@ -38,13 +38,13 @@ public class MyAdapter extends ExpandableRecyclerAdapter<RecipeViewHolder, Ingre
 
     @Override
     public void onBindParentViewHolder(RecipeViewHolder recipeViewHolder, int position, ParentListItem parentListItem) {
-        Recipe recipe = (Recipe) parentListItem;
-        recipeViewHolder.bind(recipe);
+        CategoryChannelList categoryChannelList = (CategoryChannelList) parentListItem;
+        recipeViewHolder.bind(categoryChannelList);
     }
 
     @Override
     public void onBindChildViewHolder(IngredientViewHolder ingredientViewHolder, int position, Object childListItem) {
-        Ingredient ingredient = (Ingredient) childListItem;
-        ingredientViewHolder.bind(ingredient);
+        Channels channels = (Channels) childListItem;
+        ingredientViewHolder.bind(channels);
     }
 }

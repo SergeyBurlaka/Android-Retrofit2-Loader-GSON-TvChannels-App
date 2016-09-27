@@ -3,7 +3,6 @@ package com.study.go.burlaka.showchannelsapp.loaders.server.request;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 import org.json.JSONException;
 
@@ -28,19 +27,17 @@ public abstract class BaseLoader extends AsyncTaskLoader<Cursor> {
 
     @Override
     public Cursor loadInBackground() {
-
         try {
             return apiCall();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e(TAG, "Error in loader!"+e.toString());
+         //   Log.e(TAG, "Error in loader!"+e.toString());
             return null;
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e(TAG, "Error in loader!"+e.toString());
+          //  Log.e(TAG, "Error in loader!"+e.toString());
             return null;
         }
-
     }
 
     protected abstract Cursor apiCall() throws IOException, JSONException;

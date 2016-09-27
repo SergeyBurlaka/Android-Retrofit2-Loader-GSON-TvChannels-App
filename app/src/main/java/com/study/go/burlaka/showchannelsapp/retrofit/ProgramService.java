@@ -8,9 +8,6 @@ import retrofit2.http.GET;
  * Created by Operator on 22.09.2016.
  */
 public interface ProgramService {
-
-
     @GET("PROGRAM.json")
     Call<ResponseBody> getPrograms();
-
 }

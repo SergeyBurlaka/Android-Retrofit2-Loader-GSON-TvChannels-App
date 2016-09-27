@@ -19,6 +19,7 @@ public class TextPagerAdapter extends FragmentStatePagerAdapter {
         this.data = data;
     }
 
+
     @Override
     public Fragment getItem(int i) {
 
@@ -34,10 +35,12 @@ public class TextPagerAdapter extends FragmentStatePagerAdapter {
         return fragment;
     }
 
+
     @Override
     public int getCount() {
         return data.size();
     }
+
 
     @Override
     public CharSequence getPageTitle(int position) {

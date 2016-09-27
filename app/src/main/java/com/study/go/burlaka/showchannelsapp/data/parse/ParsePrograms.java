@@ -48,7 +48,6 @@ public class ParsePrograms {
         //}
         //readerJson.endObject();
         readerJson.close();
-
         Log.d(TAG_PROGRAM,"end read" );
     }
 
@@ -69,8 +68,7 @@ public class ParsePrograms {
         while ( readerJson.hasNext()){
             String name = readerJson.nextName();
             if (name.equals("date")) {
-                Log.d (TAG_PROGRAM, "date"+readerJson.nextLong());
-
+                readerJson.nextLong();
             } else if (name.equals("showID")) {
                // Log.d (TAG_PROGRAM, "showID"+readerJson.nextString());
                 program.setChannelId(readerJson.nextString());

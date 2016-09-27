@@ -8,5 +8,8 @@
     <string name="third">Third</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="try_get_data">Please wait. Getting data from server... </string>
+    <string name="title_activity_main22">MainActivity22</string>
+    <string name="please_wait_getting_data_from_server">Please wait. Getting data from server...</string>
 
 </resources>

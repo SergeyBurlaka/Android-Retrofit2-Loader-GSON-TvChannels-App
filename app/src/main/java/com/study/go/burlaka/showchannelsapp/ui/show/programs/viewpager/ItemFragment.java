@@ -1,6 +1,5 @@
 package com.study.go.burlaka.showchannelsapp.ui.show.programs.viewpager;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,7 +49,6 @@ public class ItemFragment  extends Fragment {
     }
 
 
-
     private void createListView(ArrayList <String> al) {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 rootView.getContext(),
@@ -67,14 +65,9 @@ public class ItemFragment  extends Fragment {
 
     private class CreateProgramAsyncTaskRunner extends AsyncTask<String, String , ArrayList <String>> {
 
-        private String resp;
-        ProgressDialog progressDialog;
-
         @Override
         protected  ArrayList <String> doInBackground(String... params) {
           ArrayList <String> programList =  getPrograms (args.getString(ARG_TEXT));
-            // getPrograms (args.getString(ARG_TEXT));
-           // createListView (getPrograms (args.getString(ARG_TEXT)));
             return programList ;
         }
 
@@ -82,20 +75,16 @@ public class ItemFragment  extends Fragment {
         @Override
         protected void onPostExecute(ArrayList <String> prigramList) {
             createListView(prigramList);
-
         }
 
 
         @Override
         protected void onPreExecute() {
-
-
         }
 
 
         @Override
         protected void onProgressUpdate(String... text) {
-
         }
     }
 }

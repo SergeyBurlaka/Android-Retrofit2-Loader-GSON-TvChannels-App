@@ -4,10 +4,10 @@ package com.study.go.burlaka.showchannelsapp.data.model;
  * Created by Operator on 22.09.2016.
  */
 public class Channel {
+
     public static final String TAG = Channel.class.getSimpleName();
     public static final String TABLE = "Channel";
     //Labels Table Columns names
-
     public static final String KEY_CHANNEL_Id = "ChannelId";
     public static final String KEY_NAME = "Name";
 

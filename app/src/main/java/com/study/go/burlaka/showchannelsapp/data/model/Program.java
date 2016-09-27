@@ -10,10 +10,8 @@ public class Program {
     public static final String KEY_CHANNEL_Id = "ChannelId";
     public static final String KEY_NAME = "ShowName";
 
-
     private String channelId;
     private String name;
-
 
     public void setName(String name) {
         this.name = name;

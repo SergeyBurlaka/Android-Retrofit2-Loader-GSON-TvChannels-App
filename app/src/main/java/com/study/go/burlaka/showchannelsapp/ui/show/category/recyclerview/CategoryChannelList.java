@@ -7,15 +7,15 @@ import java.util.List;
 /**
  * Created by Operator on 25.09.2016.
  */
-public class Recipe implements ParentListItem {
+public class CategoryChannelList implements ParentListItem {
 
 
     private String mName;
-    private List<Ingredient> mIngredients;
+    private List<Channels> mChannelses;
 
-    public Recipe(String name, List<Ingredient> ingredients) {
+    public CategoryChannelList(String name, List<Channels> channelses) {
         mName = name;
-        mIngredients = ingredients;
+        mChannelses = channelses;
     }
 
     public String getName() {
@@ -24,7 +24,7 @@ public class Recipe implements ParentListItem {
 
     @Override
     public List<?> getChildItemList() {
-        return mIngredients;
+        return mChannelses;
     }
 
     @Override

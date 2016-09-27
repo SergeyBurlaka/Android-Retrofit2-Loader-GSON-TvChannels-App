@@ -1,8 +1,14 @@
 package com.study.go.burlaka.showchannelsapp.ui;
 
 import android.app.LoaderManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,16 +16,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.study.go.burlaka.showchannelsapp.R;
-import com.study.go.burlaka.showchannelsapp.data.model.Category;
+import com.study.go.burlaka.showchannelsapp.constant.MyConstants;
 import com.study.go.burlaka.showchannelsapp.loaders.server.request.CategoryLoader;
 import com.study.go.burlaka.showchannelsapp.loaders.server.request.ChannelLoader;
 import com.study.go.burlaka.showchannelsapp.loaders.server.request.ProgramLoader;
@@ -28,36 +35,45 @@ import com.study.go.burlaka.showchannelsapp.ui.fragments.ShowPrograms;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final String CH_TAG = "GetChannel";
-    private static final String PR_TAG = "GetProgram";
     private static final String TAG = "GetCategory";
-
-    private Button getCannel;
-    private Cursor cursor;
-    Toolbar toolbar;
-
+    private Toolbar toolbar;
     private Menu optionsMenu;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView nvDrawer;
-
+    //ProgressDialog loading = null;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_maim_tv);
-        //  getLoaderManager().initLoader(R.id.channel_loader, Bundle.EMPTY,  MainActivity.this);
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
         initDrawer();
         initToolBar();
+
         initFragmentOnCreate();
-
-
     }
+
+
+
+    private void beginDBWork() {
+        SharedPreferences prefs = getSharedPreferences(MyConstants.MY_DB, MODE_PRIVATE);
+        int isEmpty = prefs.getInt(MyConstants.IS_EMPTY, MyConstants.EMPTY);
+        if (isEmpty == MyConstants.EMPTY ) {
+            Toast.makeText(MainActivity.this, "Begin get data from server", Toast.LENGTH_SHORT).show();
+            onRefreshClick();
+        }
+    }
+
 
     private void initFragmentOnCreate() {
         Fragment fragment = null;
-        Class fragmentClass = null;
+        Class fragmentClass;
         fragmentClass = ShowPrograms.class;
+
         try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
@@ -68,23 +84,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setFragment (fragment);
     }
 
+
+   /*
+   *      Create and init Naw Drawer View
+   * */
     private void initDrawer() {
         // Find our drawer view
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         nvDrawer = (NavigationView) findViewById(R.id.navigation_view);
-        // Inflate the header view at runtime
-        //View headerLayout = nvDrawer.inflateHeaderView(R.layout.nav_header);
-// We can now look up items within the header if needed
-        //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
-
-       drawerToggle = setupDrawerToggle();
+        drawerToggle = setupDrawerToggle();
         drawerToggle.syncState();
-        // Tie DrawerLayout events to the ActionBarToggle
-        //mDrawer.addDrawerListener(drawerToggle);
-        // Setup drawer view
         setupDrawerContent(nvDrawer);
-
     }
+
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -104,19 +116,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Class fragmentClass = null;
         switch (menuItem.getItemId()) {
             case R.id.show_category_fragment:
-                //mViewPager.setVisibility(View.INVISIBLE);
                 fragmentClass = ShowCategory.class;
                 break;
             case R.id.show_pager_channels_fragment:
                 fragmentClass = ShowPrograms.class;
-                // mViewPager.setVisibility(View.VISIBLE);
-                // fragmentClass = SecondFragment.class;
                 break;
-            /*case R.id.nav_third_fragment:
-              //  fragmentClass = ThirdFragment.class;
-                break;*/
             default:
-                //  fragmentClass = FirstFragment.class;
         }
 
         try {
@@ -127,23 +132,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Insert the fragment by replacing any existing fragment
         setFragment (fragment);
-
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
-
-
-    mDrawer.closeDrawers();
-}
-
+        mDrawer.closeDrawers();
+    }
 
 
     private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
     }
 
 
@@ -151,32 +151,30 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
 
+
+    /*
+    *   Create and init toolbar and toolbar items
+    * */
     public void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // toolbar.setNavigationIcon(R.drawable); // just setNavigationIcon
-       // toolbar.setTitle(R.string.toolbarTitle);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.mipmap.tv_icon);
         getSupportActionBar().setTitle("  TV Channels ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_hamburger_small);
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
-
     }
 
 
     // Menu icons are inflated just as they were with actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        beginDBWork();
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -187,24 +185,44 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             case android.R.id.home:
                 mDrawer.openDrawer(GravityCompat.START);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
 
-
-
     private void onRefreshClick() {
+        if (!isOnline ()){ showFailDialog (); return;}
         stopLoaders();
-
-
-        Toast.makeText(MainActivity.this, "refresh", Toast.LENGTH_SHORT).show();
         getLoaderManager().initLoader(R.id.channel_loader, Bundle.EMPTY,  MainActivity.this);
-
         setRefreshActionButtonState(true);
+        setProgressBar ();
+    }
 
+    private void setProgressBar() {
+        spinner.setVisibility(View.VISIBLE);
+    }
+
+
+    private void showFailDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle(" Connection failed. ");
+        alertDialog.setMessage("Please check your internet connection and try again.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private void stopLoaders() {
@@ -215,8 +233,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     public void setRefreshActionButtonState(final boolean refreshing) {
-
-        //loading.show();
         if (optionsMenu != null) {
             final MenuItem refreshItem = optionsMenu
                     .findItem(R.id.myRefresh);
@@ -231,12 +247,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
 
+    /*
+    *   Create and init Loader for asynchronous tasks
+    * */
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         switch (id) {
             case R.id.channel_loader:
-               // Log.v(TAG, "onCreateLoader"+"MainActivity");
                 return new ChannelLoader(this);
             case R.id.tvshow_loader:
                 return new ProgramLoader(this);
@@ -246,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 return null;
         }
     }
+
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
@@ -257,79 +276,51 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 onFinishTVShowLoader ();
                 break;
             case R.id.category_loader:
-                onFinishCategoryLoader(data);
-
+                onFinishCategoryLoader();
                 break;
-
         }
     }
 
+
     private void onFinishChannelLoader() {
-        // readChannelData(data);
-        //getLoaderManager().initLoader(R.id.tvshow_loader, Bundle.EMPTY,  MainActivity.this);
         getLoaderManager().initLoader(R.id.category_loader, Bundle.EMPTY,  MainActivity.this);
-        //stopLoader(R.id.channel_loader);
     }
 
 
-    private void onFinishCategoryLoader(Cursor cursor) {
-        // readProgramData (/*data*/);
-        Toast.makeText(MainActivity.this, "begin read", Toast.LENGTH_SHORT).show();
-        readCategory (cursor);
+    private void onFinishCategoryLoader() {
         getLoaderManager().initLoader(R.id.tvshow_loader, Bundle.EMPTY,  MainActivity.this);
-       // stopLoader(R.id.category_loader);
     }
 
 
     private void onFinishTVShowLoader() {
-        // readProgramData (/*data*/);
-        // stopLoader(R.id.tvshow_loader);
-        //loading.dismiss();
-        setRefreshActionButtonState(true);
-        finish();
-        startActivity(getIntent());
+        setRefreshActionButtonState(false);
+        spinner.setVisibility(View.GONE);
+        initFragmentOnCreate();
     }
 
-    private void readCategory(Cursor data) {
-        if (data.isClosed())return;
-
-        if (data.moveToFirst()) {
-            int i = 0;
-            do {
-                i++;
-                String programName = data.getString(data.getColumnIndex(Category.KEY_CATEGORY));
-                String channel = data.getString(data.getColumnIndex(Category.KEY_CHANNEL));
-                Toast.makeText(MainActivity.this, "Category: "+ programName+" Channel "+channel , Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "#=->Category: " + programName+" Count: "+i);
-                // do what ever you want here
-            } while (data.moveToNext());
-        //  DatabaseManager.getInstance().closeDatabase();
-        // data.close();
-
-
-    }
-    }
-
-
-
-
-    @Override
-    public void onBackPressed()
-    {
-        // code here to show dialog
-        super.onBackPressed();  // optional depending on your needs
-        finish();
-
-    }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
     }
 
+
+    /*
+    *   Methods of activity life circle
+    * */
+
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    protected void onStop (){
+        super.onStop();
+        finish();
+   }
+
+
+    @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();  // optional depending on your needs
+        //finish();
     }
 
 

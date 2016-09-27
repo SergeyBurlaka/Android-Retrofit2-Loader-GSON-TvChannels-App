@@ -2,7 +2,6 @@ package com.study.go.burlaka.showchannelsapp.data;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.study.go.burlaka.showchannelsapp.app.App;
 import com.study.go.burlaka.showchannelsapp.data.model.Category;
@@ -44,7 +43,7 @@ public class DBHelper   extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.i(TAG, String.format("SQLiteDatabase.onUpgrade(%d -> %d)", oldVersion, newVersion));
+      //  Log.i(TAG, String.format("SQLiteDatabase.onUpgrade(%d -> %d)", oldVersion, newVersion));
         // Drop table if existed, all data will be gone!!!
         db.execSQL("DROP TABLE IF EXISTS " + Channel.TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + Program.TABLE);

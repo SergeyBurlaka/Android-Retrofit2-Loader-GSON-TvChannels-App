@@ -5,7 +5,6 @@ package com.study.go.burlaka.showchannelsapp.retrofit;
  */
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,41 +13,33 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
-/**
- * @author Artur Vasilov
- */
 public class ApiFactory {
 
     private static final int CONNECT_TIMEOUT = 15;
     private static final int WRITE_TIMEOUT = 60;
     private static final int TIMEOUT = 60;
     private static OkHttpClient sClient;
-    private static final String TAG = "GetChannel";
+   // private static final String TAG = "GetChannel";
 
     @NonNull
     public static ChannelService getChannelService() {
-
         return buildRetrofit().create(ChannelService.class);
     }
 
-
     @NonNull
     public static ProgramService getProgramService() {
-
         return buildRetrofit().create(ProgramService.class);
     }
 
     @NonNull
     public static CategoryService getCategoryService() {
-
         return buildRetrofit().create(CategoryService.class);
     }
 
 
     @NonNull
     private static Retrofit buildRetrofit() {
-        Log.i(TAG, "onBuildRetrofitApiFactory");
+       // Log.i(TAG, "onBuildRetrofitApiFactory");
         return new Retrofit.Builder()
                 .baseUrl("https://t2dev.firebaseio.com/")
                 .client(getClient())
@@ -79,5 +70,4 @@ public class ApiFactory {
                 .addInterceptor(new HttpLoggingInterceptor())
                 .build();
     }
-
 }
