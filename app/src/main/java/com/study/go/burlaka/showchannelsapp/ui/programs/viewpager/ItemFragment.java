@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.show.programs.viewpager;
+package com.study.go.burlaka.showchannelsapp.ui.programs.viewpager;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

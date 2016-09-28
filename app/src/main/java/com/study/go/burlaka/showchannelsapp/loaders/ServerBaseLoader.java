@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.loaders.server.request;
+package com.study.go.burlaka.showchannelsapp.loaders;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -11,19 +11,22 @@ import java.io.IOException;
 /**
  * Created by Operator on 22.09.2016.
  */
-public abstract class BaseLoader extends AsyncTaskLoader<Cursor> {
+public abstract class ServerBaseLoader extends AsyncTaskLoader<Cursor> {
 
     private static final String TAG = "BaseLoaderTAG";
 
-    public BaseLoader(Context context) {
+
+    public ServerBaseLoader(Context context) {
         super(context);
     }
+
 
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
         forceLoad();
     }
+
 
     @Override
     public Cursor loadInBackground() {
@@ -39,6 +42,7 @@ public abstract class BaseLoader extends AsyncTaskLoader<Cursor> {
             return null;
         }
     }
+
 
     protected abstract Cursor apiCall() throws IOException, JSONException;
 }

@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.app;
+package com.study.go.burlaka.showchannelsapp;
 
 import android.app.Application;
 import android.content.Context;
@@ -14,6 +14,7 @@ public class App  extends Application {
     private static Context context;
     private static DBHelper dbHelper;
 
+
     @Override
     public void onCreate()
     {
@@ -22,6 +23,7 @@ public class App  extends Application {
         dbHelper = new DBHelper();
         DatabaseManager.initializeInstance(dbHelper);
     }
+
 
     public static Context getContext(){
         return context;

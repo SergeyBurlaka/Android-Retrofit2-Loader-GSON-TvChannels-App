@@ -13,10 +13,10 @@ import com.study.go.burlaka.showchannelsapp.R;
 import com.study.go.burlaka.showchannelsapp.data.DatabaseManager;
 import com.study.go.burlaka.showchannelsapp.data.model.Channel;
 import com.study.go.burlaka.showchannelsapp.data.repo.ProgramRepo;
-import com.study.go.burlaka.showchannelsapp.loaders.db.ChannelDBLoader;
-import com.study.go.burlaka.showchannelsapp.loaders.server.request.ChannelLoader;
-import com.study.go.burlaka.showchannelsapp.loaders.server.request.ProgramLoader;
-import com.study.go.burlaka.showchannelsapp.ui.show.programs.viewpager.TextPagerAdapter;
+import com.study.go.burlaka.showchannelsapp.server.loader.db.ChannelDBLoader;
+import com.study.go.burlaka.showchannelsapp.server.loader.server.request.ChannelLoader;
+import com.study.go.burlaka.showchannelsapp.server.loader.server.request.ProgramLoader;
+import com.study.go.burlaka.showchannelsapp.ui.programs.viewpager.TextPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

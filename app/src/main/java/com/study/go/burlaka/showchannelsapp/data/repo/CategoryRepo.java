@@ -15,7 +15,6 @@ import java.util.ArrayList;
  */
 public class CategoryRepo {
 
-
     public  String createTable (){
         return "CREATE TABLE " + Category.TABLE + "("+
                 Category.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -23,13 +22,13 @@ public class CategoryRepo {
                 Category.KEY_CHANNEL + " TEXT);";
     }
 
+
     public   int insert (Category category){
         int categoryId;
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
         values.put(Category.KEY_CATEGORY, category.getCategoryId());
         values.put(Category.KEY_CHANNEL, category.getChannelId());
-
         //Inserting Row
         //delete();
         categoryId = (int)db.insert(Category.TABLE, null, values);
@@ -38,7 +37,6 @@ public class CategoryRepo {
     }
 
     public  void delete( ) {
-
        // if(db.e)
         try {
             SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
@@ -47,8 +45,8 @@ public class CategoryRepo {
         } catch (SQLiteException e) {
             // database doesn't exist yet.
         }
-
     }
+
 
     public Cursor query (){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
@@ -56,12 +54,10 @@ public class CategoryRepo {
     }
 
 
-    //TODO: 26.09.2016 ---/**--- create request uniq category
     public ArrayList<String> getCategory (){
         //StudentCourseList studentCourseList = new StudentCourseList();
         ArrayList<String> category = new ArrayList<>();
-       // try{
-
+        try{
             SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
 
             String selectQuery =  " SELECT DISTINCT " + Category.TABLE+"." + Category.KEY_CATEGORY
@@ -70,36 +66,29 @@ public class CategoryRepo {
 
             Cursor cursor = db.rawQuery(selectQuery, null);
             // looping through all rows and adding to list
-
             if (cursor.moveToFirst()) {
                 do {
                     category.add(cursor.getString(cursor.getColumnIndex(Category.KEY_CATEGORY)) );
                 } while (cursor.moveToNext());
             }
-
             cursor.close();
             DatabaseManager.getInstance().closeDatabase();
-
-       // } catch (SQLiteException e) {
+          } catch (SQLiteException e) {
             // database doesn't exist yet.
-       // }
+         }
         return category;
     }
 
 
-    //TODO: 26.09.2016 todo create request get channels of category
     public ArrayList <String> getChannels4mCategory(String keyChannel){
         ArrayList <String> channels = new ArrayList<>();
         try{
             SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-
             //Create select to SQLite
             String selectQuery = " SELECT "+ Category.TABLE+"."+ Category.KEY_CHANNEL
                     + " FROM "+ Category.TABLE
                     + " WHERE " + Category.TABLE + "."+Category.KEY_CATEGORY +" = '"+keyChannel+"'";
-
             //Working with cursor to get data to array list
-
             Cursor cursor = db.rawQuery(selectQuery, null);
 
             if (cursor.moveToFirst()){
@@ -107,15 +96,11 @@ public class CategoryRepo {
                     channels.add( cursor.getString( cursor.getColumnIndex(Category.KEY_CHANNEL ) ) );
                 }while (cursor.moveToNext());
             }
-
             cursor.close();
             DatabaseManager.getInstance().closeDatabase();
         } catch (SQLiteException e) {
             // database doesn't exist yet.
         }
-
-
         return channels;
     }
-
 }

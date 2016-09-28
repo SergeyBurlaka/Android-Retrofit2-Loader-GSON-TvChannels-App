@@ -24,9 +24,11 @@ public class ParsePrograms {
     private Program program;
     private ProgramRepo pr;
 
+
     public ParsePrograms (ResponseBody programResult) {
         this.programResult = programResult;
     }
+
 
     public void readJsonInsertDB () throws IOException, JSONException {
         program = new Program();

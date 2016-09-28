@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.fragments;
+package com.study.go.burlaka.showchannelsapp.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.study.go.burlaka.showchannelsapp.R;
-import com.study.go.burlaka.showchannelsapp.constant.MyConstants;
+import com.study.go.burlaka.showchannelsapp.data.constant.MyConstants;
 import com.study.go.burlaka.showchannelsapp.data.repo.ProgramRepo;
-import com.study.go.burlaka.showchannelsapp.ui.show.programs.viewpager.TextPagerAdapter;
+import com.study.go.burlaka.showchannelsapp.ui.programs.viewpager.TextPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

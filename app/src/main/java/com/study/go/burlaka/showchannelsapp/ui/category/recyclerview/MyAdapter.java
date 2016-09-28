@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview;
+package com.study.go.burlaka.showchannelsapp.ui.category.recyclerview;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -24,11 +24,13 @@ public class MyAdapter extends ExpandableRecyclerAdapter<RecipeViewHolder, Ingre
         mInflator = LayoutInflater.from(context);
     }
 
+
     @Override
     public RecipeViewHolder onCreateParentViewHolder(ViewGroup parentViewGroup) {
         View recipeView = mInflator.inflate(R.layout.recipe_view, parentViewGroup, false);
         return new RecipeViewHolder(recipeView);
     }
+
 
     @Override
     public IngredientViewHolder onCreateChildViewHolder(ViewGroup childViewGroup) {
@@ -41,6 +43,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<RecipeViewHolder, Ingre
         CategoryChannelList categoryChannelList = (CategoryChannelList) parentListItem;
         recipeViewHolder.bind(categoryChannelList);
     }
+
 
     @Override
     public void onBindChildViewHolder(IngredientViewHolder ingredientViewHolder, int position, Object childListItem) {

@@ -1,10 +1,10 @@
-package com.study.go.burlaka.showchannelsapp.loaders.db;
+package com.study.go.burlaka.showchannelsapp.server.loader.db;
 
 import android.content.Context;
 import android.database.Cursor;
 
 import com.study.go.burlaka.showchannelsapp.data.repo.ProgramRepo;
-import com.study.go.burlaka.showchannelsapp.loaders.BaseLoader;
+import com.study.go.burlaka.showchannelsapp.server.loader.BaseLoader;
 
 import org.json.JSONException;
 

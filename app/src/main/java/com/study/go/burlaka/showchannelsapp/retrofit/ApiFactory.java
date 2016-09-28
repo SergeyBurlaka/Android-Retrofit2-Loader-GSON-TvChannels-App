@@ -26,10 +26,12 @@ public class ApiFactory {
         return buildRetrofit().create(ChannelService.class);
     }
 
+
     @NonNull
     public static ProgramService getProgramService() {
         return buildRetrofit().create(ProgramService.class);
     }
+
 
     @NonNull
     public static CategoryService getCategoryService() {
@@ -47,6 +49,7 @@ public class ApiFactory {
                 .build();
     }
 
+
     @NonNull
     private static OkHttpClient getClient() {
         OkHttpClient client = sClient;
@@ -60,6 +63,7 @@ public class ApiFactory {
         }
         return client;
     }
+
 
     @NonNull
     private static OkHttpClient buildClient() {

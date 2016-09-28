@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.fragments;
+package com.study.go.burlaka.showchannelsapp.ui;
 
 import android.app.LoaderManager;
 import android.content.Loader;
@@ -16,9 +16,9 @@ import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter
 import com.study.go.burlaka.showchannelsapp.R;
 import com.study.go.burlaka.showchannelsapp.data.model.Category;
 import com.study.go.burlaka.showchannelsapp.data.repo.CategoryRepo;
-import com.study.go.burlaka.showchannelsapp.loaders.database.GetCategoryChannels;
-import com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview.CategoryChannelList;
-import com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview.MyAdapter;
+import com.study.go.burlaka.showchannelsapp.loaders.DBCategoryChannelsLoader;
+import com.study.go.burlaka.showchannelsapp.ui.category.recyclerview.CategoryChannelList;
+import com.study.go.burlaka.showchannelsapp.ui.category.recyclerview.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +62,7 @@ public class ShowCategory extends Fragment  {
         public Loader<List<CategoryChannelList>> onCreateLoader(int id, Bundle bundle) {
             switch (id) {
                 case R.id.category_channel_db_loader:
-                    return new GetCategoryChannels(getContext(),category );
+                    return new DBCategoryChannelsLoader(getContext(),category );
                 default:
                     return null;
             }

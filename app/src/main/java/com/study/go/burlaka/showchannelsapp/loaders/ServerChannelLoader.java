@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.loaders.server.request;
+package com.study.go.burlaka.showchannelsapp.loaders;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -18,12 +18,13 @@ import retrofit2.Call;
 /**
  * Created by Operator on 22.09.2016.
  */
-public class ChannelLoader extends BaseLoader {
+public class ServerChannelLoader extends ServerBaseLoader {
    // private static final String TAG = "GetChannel";
 
-    public ChannelLoader(Context context) {
+    public ServerChannelLoader(Context context) {
         super(context);
     }
+
 
     @Override
     protected Cursor apiCall() throws IOException, JSONException {
@@ -32,6 +33,7 @@ public class ChannelLoader extends BaseLoader {
         new ParseChannels( RequestToChannel ()).parseInsertDB();
         return null;
     }
+
 
     private ResponseBody RequestToChannel() throws IOException {
         ChannelService service = ApiFactory.getChannelService();

@@ -1,11 +1,11 @@
-package com.study.go.burlaka.showchannelsapp.loaders.database;
+package com.study.go.burlaka.showchannelsapp.loaders;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
 import com.study.go.burlaka.showchannelsapp.data.repo.CategoryRepo;
-import com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview.CategoryChannelList;
-import com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview.Channels;
+import com.study.go.burlaka.showchannelsapp.ui.category.recyclerview.CategoryChannelList;
+import com.study.go.burlaka.showchannelsapp.ui.category.recyclerview.Channels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,16 @@ import java.util.List;
 /**
  * Created by Operator on 25.09.2016.
  */
-public class GetCategoryChannels extends AsyncTaskLoader <List<CategoryChannelList>> {
+public class DBCategoryChannelsLoader extends AsyncTaskLoader <List<CategoryChannelList>> {
 
    // private static final String TAG ="GetCategoryDB" ;
     ArrayList <String> categoryList ;
 
-    public GetCategoryChannels(Context context, ArrayList <String> categoryList) {
+    public DBCategoryChannelsLoader(Context context, ArrayList <String> categoryList) {
         super(context);
         this.categoryList = categoryList;
     }
+
 
     @Override
     protected void onStartLoading() {

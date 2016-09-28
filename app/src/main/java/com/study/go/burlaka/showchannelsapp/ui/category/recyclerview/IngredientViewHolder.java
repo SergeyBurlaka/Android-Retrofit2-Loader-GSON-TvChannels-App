@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview;
+package com.study.go.burlaka.showchannelsapp.ui.category.recyclerview;
 
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +17,7 @@ public class IngredientViewHolder extends ChildViewHolder {
         super(itemView);
         mIngredientTextView = (TextView) itemView.findViewById(R.id.ingredient_textview);
     }
+
 
     public void bind(Channels channels) {
         mIngredientTextView.setText(channels.getName());

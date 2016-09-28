@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui.show.category.recyclerview;
+package com.study.go.burlaka.showchannelsapp.ui.category.recyclerview;
 
 /**
  * Created by Operator on 25.09.2016.
@@ -10,6 +10,7 @@ public class Channels {
     public Channels(String name) {
         mName = name;
     }
+
 
     public String getName() {
         return mName;

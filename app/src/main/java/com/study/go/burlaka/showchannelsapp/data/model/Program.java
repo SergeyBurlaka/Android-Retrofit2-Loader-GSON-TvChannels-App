@@ -17,13 +17,16 @@ public class Program {
         this.name = name;
     }
 
+
     public void setChannelId(String channelId) {
         this.channelId = channelId;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     public String getChannelId() {
         return channelId;

@@ -23,13 +23,14 @@ public class ParseChannels {
     private ChannelRepo cr;
     private Channel channel;
 
+
     public ParseChannels(ResponseBody channelResult) {
         this.channelResult = channelResult;
     }
 
 
     public void parseInsertDB () throws IOException, JSONException {
-      //  Log.d(TAG,"on start parse" );
+        //Log.d(TAG,"on start parse" );
         cr = new ChannelRepo();
         channel = new Channel();
         JSONObject channelsJSON;
@@ -42,18 +43,18 @@ public class ParseChannels {
             try {
                 getChannelObj = (JSONObject) channelsJSON.get(key);
 
-               // Log.d(TAG,"insert channel_id" +getChannelObj.getString(CHANNEL_ID));
+                //Log.d(TAG,"insert channel_id" +getChannelObj.getString(CHANNEL_ID));
                 channel.setChannelId(getChannelObj.getString(CHANNEL_ID));
 
-              //  Log.d(TAG,"insert channel_name" +getChannelObj.getString(CHANNEL_NAME));
+                //Log.d(TAG,"insert channel_name" +getChannelObj.getString(CHANNEL_NAME));
                 channel.setName(getChannelObj.getString(CHANNEL_NAME));
 
                 //Insert to database channel table
                 cr.insert(channel);
 
             } catch (JSONException e) {
-                // Something went wrong!
-             //   Log.e(TAG,"Something went wrong! " +e.toString());
+                //Something went wrong!
+                //Log.e(TAG,"Something went wrong! " +e.toString());
             }
         }
     }

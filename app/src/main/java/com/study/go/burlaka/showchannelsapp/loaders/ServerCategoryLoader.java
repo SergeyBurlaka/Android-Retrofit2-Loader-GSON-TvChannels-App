@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.loaders.server.request;
+package com.study.go.burlaka.showchannelsapp.loaders;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -18,12 +18,13 @@ import retrofit2.Call;
 /**
  * Created by Operator on 24.09.2016.
  */
-public class CategoryLoader extends BaseLoader {
+public class ServerCategoryLoader extends ServerBaseLoader {
    // private static final String TAG = "GetCategory";
 
-    public CategoryLoader(Context context) {
+    public ServerCategoryLoader(Context context) {
         super(context);
     }
+
 
     @Override
     protected Cursor apiCall() throws IOException, JSONException {
@@ -32,6 +33,7 @@ public class CategoryLoader extends BaseLoader {
         new ParseCategory( RequestToCategory()).parseInsertDB();
         return  cr.query() ;
     }
+
 
     private ResponseBody RequestToCategory() throws IOException {
         CategoryService service = ApiFactory.getCategoryService();

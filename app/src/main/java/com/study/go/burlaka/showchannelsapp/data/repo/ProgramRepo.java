@@ -22,6 +22,7 @@ public class ProgramRepo {
 
     }
 
+
     public  String createTable (){
         return "CREATE TABLE " + Program.TABLE + "("+
                 Program.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -44,6 +45,7 @@ public class ProgramRepo {
         return programId;
     }
 
+
     public  void delete( ) {
 
        try{
@@ -56,11 +58,11 @@ public class ProgramRepo {
 
     }
 
+
     public  Cursor query (){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         return db.query(Program.TABLE, null, null, null, null, null, null);
     }
-
 
 
     public  ArrayList <String> getChannelForShowing (){
@@ -82,16 +84,14 @@ public class ProgramRepo {
                 channels.add(cursor.getString(cursor.getColumnIndex(Channel.KEY_CHANNEL_Id)) );
             } while (cursor.moveToNext());
         }
-
         cursor.close();
-
-
         DatabaseManager.getInstance().closeDatabase();
         } catch (SQLiteException e) {
             // database doesn't exist yet.
         }
         return channels;
     }
+
 
 
     public ArrayList <String> getPrograms4Channel (String keyChannel){
@@ -120,12 +120,6 @@ public class ProgramRepo {
         } catch (SQLiteException e) {
             // database doesn't exist yet.
         }
-
-
         return programs;
     }
-
-
-
-
 }

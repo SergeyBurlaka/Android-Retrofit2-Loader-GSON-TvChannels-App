@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.loaders.server.request;
+package com.study.go.burlaka.showchannelsapp.loaders;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -17,13 +17,14 @@ import retrofit2.Call;
 /**
  * Created by Operator on 22.09.2016.
  */
-public class ProgramLoader extends BaseLoader {
+public class ServerProgramLoader extends ServerBaseLoader {
 
    // private static final String TAG_PROGRAM = "GetProgram";
 
-    public ProgramLoader (Context context) {
+    public ServerProgramLoader(Context context) {
         super(context);
     }
+
 
     @Override
     protected Cursor apiCall() throws IOException, JSONException {
@@ -31,6 +32,7 @@ public class ProgramLoader extends BaseLoader {
         new ParsePrograms(RequestToProgram()).readJsonInsertDB();
         return null;
     }
+
 
     private ResponseBody RequestToProgram() throws IOException {
         ProgramService ps = ApiFactory.getProgramService();

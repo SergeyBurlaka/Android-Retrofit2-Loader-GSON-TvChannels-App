@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Operator on 22.09.2016.
  */
 public class DatabaseManager {
+
     private Integer mOpenCounter = 0;
     private static DatabaseManager instance;
     private static SQLiteOpenHelper mDatabaseHelper;
@@ -19,6 +20,7 @@ public class DatabaseManager {
         }
     }
 
+
     public static synchronized DatabaseManager getInstance() {
         if (instance == null) {
             throw new IllegalStateException(DatabaseManager.class.getSimpleName() +
@@ -27,6 +29,7 @@ public class DatabaseManager {
 
         return instance;
     }
+
 
     public synchronized SQLiteDatabase openDatabase() {
         mOpenCounter+=1;
@@ -37,12 +40,12 @@ public class DatabaseManager {
         return mDatabase;
     }
 
+
     public synchronized void closeDatabase() {
         mOpenCounter-=1;
         if(mOpenCounter == 0) {
             // Closing database
             mDatabase.close();
-
         }
     }
 }

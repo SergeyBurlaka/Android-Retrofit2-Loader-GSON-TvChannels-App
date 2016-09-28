@@ -18,11 +18,13 @@ public class ChannelRepo {
 
     }
 
+
     public  String createTable (){
         return "CREATE TABLE " + Channel.TABLE + "("+
                 Channel.KEY_CHANNEL_Id + " TEXT PRIMARY KEY, "+
                 Channel.KEY_NAME + " TEXT);";
     }
+
 
     public   int insert (Channel channel){
         int channelId;
@@ -38,6 +40,7 @@ public class ChannelRepo {
     return channelId;
     }
 
+
     public  void delete( ) {
         try{
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
@@ -48,9 +51,9 @@ public class ChannelRepo {
         }
     }
 
+
     public  Cursor query (){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         return db.query(Channel.TABLE, null, null, null, null, null, null);
     }
-
 }

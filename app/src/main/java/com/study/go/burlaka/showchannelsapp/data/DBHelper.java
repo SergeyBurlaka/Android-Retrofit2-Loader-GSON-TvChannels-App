@@ -3,7 +3,7 @@ package com.study.go.burlaka.showchannelsapp.data;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.study.go.burlaka.showchannelsapp.app.App;
+import com.study.go.burlaka.showchannelsapp.App;
 import com.study.go.burlaka.showchannelsapp.data.model.Category;
 import com.study.go.burlaka.showchannelsapp.data.model.Channel;
 import com.study.go.burlaka.showchannelsapp.data.model.Program;
@@ -30,6 +30,7 @@ public class DBHelper   extends SQLiteOpenHelper {
         super(App.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         channelRepo = new ChannelRepo();
@@ -40,6 +41,7 @@ public class DBHelper   extends SQLiteOpenHelper {
         db.execSQL(programRepo.createTable());
         db.execSQL(categoryRepo.createTable());
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

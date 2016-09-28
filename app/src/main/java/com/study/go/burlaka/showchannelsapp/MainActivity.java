@@ -1,4 +1,4 @@
-package com.study.go.burlaka.showchannelsapp.ui;
+package com.study.go.burlaka.showchannelsapp;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -25,13 +25,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.study.go.burlaka.showchannelsapp.R;
-import com.study.go.burlaka.showchannelsapp.constant.MyConstants;
-import com.study.go.burlaka.showchannelsapp.loaders.server.request.CategoryLoader;
-import com.study.go.burlaka.showchannelsapp.loaders.server.request.ChannelLoader;
-import com.study.go.burlaka.showchannelsapp.loaders.server.request.ProgramLoader;
-import com.study.go.burlaka.showchannelsapp.ui.fragments.ShowCategory;
-import com.study.go.burlaka.showchannelsapp.ui.fragments.ShowPrograms;
+import com.study.go.burlaka.showchannelsapp.data.constant.MyConstants;
+import com.study.go.burlaka.showchannelsapp.loaders.ServerCategoryLoader;
+import com.study.go.burlaka.showchannelsapp.loaders.ServerChannelLoader;
+import com.study.go.burlaka.showchannelsapp.loaders.ServerProgramLoader;
+import com.study.go.burlaka.showchannelsapp.ui.ShowCategory;
+import com.study.go.burlaka.showchannelsapp.ui.ShowPrograms;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -44,19 +43,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     //ProgressDialog loading = null;
     private ProgressBar spinner;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_maim_tv);
-
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         initDrawer();
         initToolBar();
-
         initFragmentOnCreate();
     }
-
 
 
     private void beginDBWork() {
@@ -79,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         // Insert the fragment by replacing any existing fragment
         setFragment (fragment);
     }
@@ -199,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setProgressBar ();
     }
 
+
     private void setProgressBar() {
         spinner.setVisibility(View.VISIBLE);
     }
@@ -255,11 +252,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         switch (id) {
             case R.id.channel_loader:
-                return new ChannelLoader(this);
+                return new ServerChannelLoader(this);
             case R.id.tvshow_loader:
-                return new ProgramLoader(this);
+                return new ServerProgramLoader(this);
             case R.id.category_loader:
-                return new CategoryLoader(this);
+                return new ServerCategoryLoader(this);
             default:
                 return null;
         }
@@ -322,6 +319,4 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //super.onBackPressed();  // optional depending on your needs
         //finish();
     }
-
-
 }

@@ -21,12 +21,14 @@ public class ParseCategory {
     private CategoryRepo cr;
     private Category category;
 
+
     public ParseCategory (ResponseBody channelResult) {
         this.categoryResult = channelResult;
     }
 
+
     public void parseInsertDB () throws IOException, JSONException {
-      //  Log.d(TAG,"on start parse" );
+        //Log.d(TAG,"on start parse" );
         cr = new CategoryRepo();
         category = new Category();
         JSONObject categoryJSON;
@@ -45,6 +47,7 @@ public class ParseCategory {
             }
         }
     }
+
 
     private void iterateInCategory(JSONObject categoryJSON, String key, CategoryRepo cr) throws JSONException {
         JSONObject getCategoryObj;
