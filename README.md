@@ -9,5 +9,7 @@
 
 ### Screenshots
 <img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-46-46.jpg" >
+
 <img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-46-56.jpg" >
+
 <img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-44-37.jpg" >
