@@ -4,9 +4,12 @@
 [APK from Github](https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/APK/app-debug.apk)  
 
 ## My java code 
+
+[/app/src/main/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main)
+
  [com/study/go/burlaka/showchannelsapp] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
  
- [/app/src/main/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main)
+ 
 
 ## Technology used in TvChannels
 [Retrofit2] (http://square.github.io/retrofit/), [Loader] (https://developer.android.com/guide/components/loaders.html), [SQLite] (https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html), [Fragments] (https://developer.android.com/guide/components/fragments.html),
