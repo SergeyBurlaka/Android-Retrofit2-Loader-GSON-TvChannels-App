@@ -5,9 +5,7 @@
 
 ## My java code 
 
-[/app/src/main/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main)
-
- [app/src/main/java/com/study/go/burlaka/showchannelsapp/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
+ [tv channel app source ] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
  
  
 
