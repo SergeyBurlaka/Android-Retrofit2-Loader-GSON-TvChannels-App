@@ -8,8 +8,8 @@
 [expandable-recycler-view library] (https://github.com/bignerdranch/expandable-recycler-view) (A custom RecyclerView which allows for an expandable view to be attached to each ViewHolder).
 
 ### Screenshots
-<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-46-46.jpg" >
+<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-15-29-47.png" >
 
-<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-46-56.jpg" >
+<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-15-29-21.png" >
 
-<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-14-44-37.jpg" >
+<img src="https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/JPG/Screenshot_2016-09-28-15-29-27.png" >
