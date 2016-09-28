@@ -7,7 +7,7 @@
 
 [/app/src/main/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main)
 
- [com/study/go/burlaka/showchannelsapp] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
+ [app/src/main/java/com/study/go/burlaka/showchannelsapp/] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
  
  
 
