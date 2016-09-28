@@ -3,7 +3,7 @@
 ##Download
 [APK from Github](https://github.com/SergeyBurlaka/Android-Retrofit2-Loaders-GSON-TvChannels-App/blob/master/APK/app-debug.apk)  
 
-## Java source 
+## My java code 
  [com/study/go/burlaka/showchannelsapp] (https://github.com/SergeyBurlaka/Android-Retrofit2-Loader-GSON-TvChannels-App/tree/master/app/src/main/java/com/study/go/burlaka/showchannelsapp)
 
 ## Technology used in TvChannels
